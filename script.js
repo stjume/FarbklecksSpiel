@@ -1,5 +1,4 @@
 const gameContainer = document.getElementById('game-container');
-const startButton = document.getElementById('start-btn')
 const klecksBilder = [
     "images/klecks2.png",
     "images/klecks3.png",
@@ -8,7 +7,7 @@ const klecksBilder = [
 ]
 const klecksPositionen = [];
 const minDistance = 100;
-const maxRespawns = 1;
+const maxRespawns = 0;
 
 
 function createKleckse() {
@@ -38,18 +37,17 @@ function createKleckse() {
 
     klecks.addEventListener("click", () => {
         let respawnsLeft = Number(klecks.dataset.respawnsLeft);
-            if(respawnsLeft>0) {
-                alert("test");
-            }
-            else {
-                klecks.remove();    
-            }
-        respawnsLeft--;
-        klecks.dataset.respawnsLeft = respawnsLeft;
+        if (respawnsLeft > 0) {
+            respawnsLeft--;
+            klecks.dataset.respawnsLeft = respawnsLeft;
+            // evtl. neue Position
+        } 
+        else {
+            klecks.remove();
+        }
         })
     }
 }
-
 
 
 function getValidPosition(klecksGroesse) {      //random und unique x,y Koordianten
@@ -81,12 +79,11 @@ function getValidPosition(klecksGroesse) {      //random und unique x,y Koordian
 }
 
 function randomSize () {
-    const min = 75;
+    const min = 90;
     const max = 125;
     const size = Math.random() * (max - min) + min;
     return size;
 }
 
-
-startButton.addEventListener("click", createKleckse);
+createKleckse();
 
