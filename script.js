@@ -88,5 +88,5 @@ function randomSize () {
     return size;
 }
 
-createKleckse(75);
+createKleckse(5);
 
