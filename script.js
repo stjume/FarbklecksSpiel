@@ -37,7 +37,8 @@ function createKleckse(anzahl) {
         klecks.style.backgroundPosition = "center";
         // klecks.dataset.respawnsLeft = maxRespawns;
 
-        klecksPositionen.push({x: position.x, y: position.y});
+        const posObj = { x: position.x, y: position.y, size: klecksSize };
+        klecksPositionen.push(posObj);
 
     gameContainer.appendChild(klecks);
 
@@ -45,6 +46,12 @@ function createKleckse(anzahl) {
         // let respawnsLeft = Number(klecks.dataset.respawnsLeft);
         clickCount++;
         klecks.remove();
+        const index = klecksPositionen.indexOf(posObj);
+        
+        if (index !== -1) {
+            klecksPositionen.splice(index, 1);
+        }
+
         if (clickCount % 3 === 0) {
             createKleckse(1);
         }
