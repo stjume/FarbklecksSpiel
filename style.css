@@ -74,9 +74,16 @@ main {
     cursor: pointer;
     touch-action: manipulation;
     z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none;
 }
 
 .klecks:hover {
     cursor: pointer;
     touch-action: manipulation;
+}
+
+.klecks:active {
+    outline: none;
 }
