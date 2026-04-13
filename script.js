@@ -47,7 +47,9 @@ function createKleckse(anzahl) {
 
     gameContainer.appendChild(klecks);
 
-    klecks.addEventListener("click", () => {
+    klecks.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        console.log("geklickt");
         // let respawnsLeft = Number(klecks.dataset.respawnsLeft);
         clickCount++;
         klecks.remove();
@@ -119,5 +121,5 @@ function randomSize () {
     return size;
 }
 
-createKleckse(35);
+createKleckse(85);
 
