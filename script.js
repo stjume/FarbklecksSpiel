@@ -119,13 +119,21 @@ function randomSize () {
     let min;
     let max;
 
-    if (screenWidth>=768) {
-        min = 200;
-        max = 260;
-    }
-    else {
+    if (screenWidth < 768) { //phone
         min = 100;
         max = 140;
+    }
+    else if (screenWidth < 1200) { //ipad/laptop
+        min = 140;
+        max = 200;
+    }
+    else if (screenWidth < 1700) { //Desktop
+        min = 200;
+        max = 240;
+    }
+    else {
+        min = 240;
+        max = 300;
     }
 
     const size = Math.random() * (max - min) + min;
