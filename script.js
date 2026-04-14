@@ -120,14 +120,14 @@ function randomSize () {
     let max;
 
     if (screenWidth < 768) { //phone
-        min = 100;
-        max = 140;
+        min = 80;
+        max = 100;
     }
     else if (screenWidth < 1200) { //ipad/laptop
         min = 140;
         max = 200;
     }
-    else if (screenWidth < 1700) { //Desktop
+    else if (screenWidth < 1700) { //Desktop/laptop
         min = 200;
         max = 240;
     }
@@ -148,6 +148,24 @@ document.addEventListener(
   { passive: false }
 );
 
+function getInitialKlecksCount() {
+    const containerWidth = gameContainer.clientWidth;
+    const containerHeight = gameContainer.clientHeight;
+    const area = containerWidth * containerHeight;
 
-createKleckse(180);
+    if (area < 500000) {
+        return 10;
+    } else if (area < 900000) {
+        return 180;
+    }
+    else if (area < 1100000) {
+        return 200;
+    } else if (area < 1400000) {
+        return 220;
+    } else {
+        return 250;
+    }
+}
+
+createKleckse(getInitialKlecksCount());
 
